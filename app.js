@@ -1,0 +1,56 @@
+const events = {
+  '001': { title: '사막의 형상', text: ['당신이 피부가 타들어갔을 듯한, 그 뷜헬라 사막을 횡단하던 때였다. 당신은 벅찬 발걸음을 재촉하며 물을 찾으려 애를 쓰고 있었다.', '그때 당신은 저 멀리서 다가오는 무언가의 형상을 보았다.'], choices: [{ label: '형상에게 다가간다', next: '001-1' }, { label: '무시하고 지나친다', next: '001-2' }] },
+  '001-1': { title: '사막의 형상', text: ['당신이 만난 것은'], choices: [] },
+  '001-2': { title: '사막의 형상', text: ['당신은 물을 찾는 데 한 시도 낭비할 수 없었기에, 그것을 단순 아지랑이로 치부하고 지나치기로 하였다.', '때마침 운이 좋게 작은 웅덩이를 발견한 당신은 메마른 목을 축일 수 있었다.'], choices: [] },
+  '002': { title: '사막의 상인조합', text: ['뷜헬라 사막을 횡단하던 중 당신 앞에 낙타를 탄 이들이 다가와 말을 걸었다.', '그들은 자신들을 뷜헬라 사막의 상인조합이라고 소개한 뒤, 당신에게 거래를 제안하였다.'], choices: [{ label: '거래품을 확인한다 (거래품 5개)', next: '002-1' }, { label: '거래를 거절한다', next: '002-2' }, { label: '기타행동 (강탈/공격/협박/선물/친분)', next: null }] },
+  '002-1': { title: '상인조합의 제안', text: ['거래를 마친 뒤 상인들은 당신에게 상인조합이 거주해 있는 상단으로 같이 가는 것이 어떠냐고 제안해왔다.', '그들의 말에 따르면 해당 상단은 이 뷜헬라 사막 무역의 중심에 있는 거대 상단이라고 하였다.'], choices: [{ label: '상인 일행을 따라간다', next: '002-1-1' }, { label: '상인 일행을 따라가지 않는다', next: '002-1-2' }, { label: '기타행동 (강탈/공격/협박/선물/친분)', next: null }] },
+  '002-1-1': { title: '거대 상단', text: ['상인들을 따라 이동하자 얼마 뒤, 그들의 말대로 화려하고 고급진 상단이 사막 한복판에 자리잡고 있는 모습이 보였다.'], choices: [{ label: '상회 내부로 들어간다', next: '003-1' }] },
+  '002-1-2': { title: '사막의 상인조합', text: ['상인 일행들은 당신을 지나쳐 떠나갔다.'], choices: [] },
+  '002-2': { title: '사막의 상인조합', text: ['상인 일행들은 당신을 지나쳐 떠나갔다.'], choices: [] },
+  '003': { title: '사막 한복판의 상회', text: ['당신은 뷜헬라 사막 한복판에 거대하고 무척이나 고급진 상회 건물이 자리잡고 있는 모습을 보았다.'], choices: [{ label: '상회 내부로 들어간다', next: '003-1' }, { label: '주위를 살펴본다', next: '003-2' }, { label: '무시하고 지나친다', next: null }] },
+  '003-1': { title: '사막 한복판의 상회', text: ['상회 내부로 들어가자 거대한 상회에 여러 상인이 둘러앉아 물건들을 팔고 있는 것이 보였다.', '그중 당신에게 필요한 물품이 있을 수도 있기에 당신은 근처를 둘러보기로 하였다.'], choices: [{ label: '무기 상점 (거래물품 8개)', next: null }, { label: '마법용품 상점 (거래물품 8개)', next: null }, { label: '소환구 상점 (거래물품 5개)', next: null }, { label: '재료 상점 (거래물품 10개)', next: null }] },
+  '003-2': { title: '사막 한복판의 상회', text: ['주위에서 상회를 둘러보자 너무 고급지다는 것 외에 별다른 이상한 점은 찾지 못하였다.'], choices: [] },
+  '004': { title: '거대한 동굴의 문', text: ['발론의 깊고 험난한 숲길을 가까스로 헤쳐나가던 중 당신의 눈에 특이한 장소가 보였다.', '당신이 본 것은 굉장히 커다란 동굴의 입구였는데, 그 앞에 웬 거대한 문짝이 달려있었다. 이상함을 여긴 당신은 문 앞까지 다가가 보았다.', '문의 바로 앞까지 다가가 보자 그 크기가 얼마나 큰 것인지 제대로 실감되었다. 그것은 사람이 만들었다고 할 수 없을 정도로 크고 정교했다.'], choices: [{ label: '문을 힘껏 당겨본다 (힘 판정 성공 시)', next: '004-1' }, { label: '문을 조사해본다 (통찰력 판정 성공 시)', next: '004-2' }, { label: '무시하고 지나친다', next: null }] },
+  '004-1': { title: '거대한 동굴의 문', text: ['문을 당겨보자 엄청난 굉음과 함께 문이 조금이나마 열리고 있었다.', '열린 틈 사이로 보자 동굴의 안이 끝이 보이지 않을 정도로 길다는 것을 확인할 수 있었다.'], choices: [] },
+  '004-2': { title: '거대한 동굴의 문', text: ['문을 조사해보자 문의 소재로 사용된 돌이 이곳 근처 지역에서는 발견되지 않는 소재라는 것을 알아내었다.', '또한 문에 어떠한 상형문자로 보이는 자국들이 새겨져 있었다.'], choices: [] }
+};
+
+const labels = { settings: '설정', encyclopedia: '도감', crafting: '물건 제작', inventory: '인벤토리' };
+const narrative = document.getElementById('narrative');
+const choices = document.getElementById('choices');
+const eventEnd = document.getElementById('event-end');
+const dialog = document.getElementById('info-dialog');
+
+function renderEvent(id) {
+  const event = events[id];
+  document.getElementById('event-number').textContent = id.split('-')[0];
+  document.getElementById('event-title').textContent = event.title;
+  narrative.replaceChildren(...event.text.map((line) => { const paragraph = document.createElement('p'); paragraph.textContent = line; return paragraph; }));
+  choices.replaceChildren(); eventEnd.hidden = event.choices.length !== 0;
+  event.choices.forEach((choice) => { const button = document.createElement('button'); button.className = 'choice'; button.innerHTML = `<span>${choice.label}</span><span>›</span>`; button.addEventListener('click', () => choice.next && events[choice.next] ? renderEvent(choice.next) : endEvent()); choices.append(button); });
+}
+function endEvent() { choices.replaceChildren(); eventEnd.hidden = false; }
+function openPanel(name) { document.getElementById('dialog-title').textContent = labels[name]; document.getElementById('dialog-content').innerHTML = '<p>아직 기록된 정보가 없습니다.</p>'; dialog.showModal(); }
+document.querySelectorAll('.nav-item').forEach((button) => button.addEventListener('click', () => openPanel(button.dataset.panel)));
+document.querySelector('.close').addEventListener('click', () => dialog.close());
+dialog.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+const musicToggle = document.getElementById('music-toggle');
+const musicHost = document.getElementById('music-host');
+musicToggle.addEventListener('click', () => {
+  const playing = musicToggle.getAttribute('aria-pressed') === 'true';
+  if (!playing && !musicHost.firstChild) {
+    const player = document.createElement('iframe');
+    player.title = '배경 음악';
+    player.src = 'https://www.youtube-nocookie.com/embed/0WQ78mAN4Do?autoplay=1&playsinline=1';
+    player.allow = 'autoplay';
+    musicHost.append(player);
+  } else if (musicHost.firstChild) {
+    musicHost.replaceChildren();
+  }
+  musicToggle.setAttribute('aria-pressed', String(!playing));
+  musicToggle.textContent = playing ? 'BGM' : 'BGM ON';
+});
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js').then((registration) => registration.update());
+}
+renderEvent('001');
