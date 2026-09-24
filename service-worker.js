@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dawn-continent-v3';
+const CACHE_NAME = 'dawn-continent-v4';
 const ASSETS = ['./', './index.html', './style.css', './app.js', './manifest.webmanifest'];
 
 self.addEventListener('install', (event) => {
